@@ -24,3 +24,11 @@
  - the factories are pretty basic, only `name` and `title`
  - Since Employees can have different roles on the Projects and not themselves, I will attach them from the Project Seeder. I will use the function `each()` to do that. I will also add the timestamps to make the db 'heavier' and have uniformity with irl examples
  - Now I can test the relations with tinker, firing `App\Models\Employee::first()->projects()->get()` and `App\Models\Project::first()->employees()->get()` returns data and works fine :joy:
+ - Now for the extra functions in **task 1.4** and **task 1.5**
+ - Since this is a test I will write an additional function for the first point of task 1.4, but I could just call the Eloquest relation `employees` and `get()` method or call `$project->employees` as attribute. Let's just map the `pivot->role` attribute to the employee itself as `role`
+ - For counting I will have to use `DB::raw` since role is not a Model to use `withCount`, also invoke the relation, not the collection and return as `$role => $count`
+ - For Employee's projects function I will copy paste the `getEmployees` funciton from Project since from a functional perspective is the same and adjust the semantics
+
+# Task 2
+ - actually **task 2.2** since 2.1 is already implemented for testing purposes in Task 1.
+ -  

@@ -15,4 +15,12 @@ class Employee extends Model
     {
         return $this->belongsToMany(Project::class)->withPivot('role');
     }
+
+    public function getProjectsWithRoles()
+    {
+        return $this->projects->map(function ($project) {
+            $project->role = $project->pivot->role; // Attach the pivot role to the project
+            return $project;
+        });
+    }
 }
