@@ -23,3 +23,4 @@
  - `php artisan make:seed ProjectSeeder` and `php artisan make:factory ProjectFactory`
  - the factories are pretty basic, only `name` and `title`
  - Since Employees can have different roles on the Projects and not themselves, I will attach them from the Project Seeder. I will use the function `each()` to do that. I will also add the timestamps to make the db 'heavier' and have uniformity with irl examples
+ - Now I can test the relations with tinker, firing `App\Models\Employee::first()->projects()->get()` and `App\Models\Project::first()->employees()->get()` returns data and works fine :joy:
