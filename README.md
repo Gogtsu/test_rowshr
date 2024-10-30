@@ -1,8 +1,10 @@
+# Docker installation
+ - run `docker-compose up -d --build`
+ - after the build run `docker-compose exec php chown -R laravel:laravel /var/www/html/storage /var/www/html/bootstrap/cache` to give laravel user group access to these folders
 # Installation
  I already have laravel installer on my Windows machine. 
  - I ran the command `laravel new test_rowshr`
  - I'll be using Wamp server with a vhost for now for faster development. 
- - Later I will provide a docker-compose. I do not want to install laravel through docker since that requires a composer installation in, what will likely be, a Dockerfile for PHP
  - I will be using the latest version of Laravel 11.x (11.9 as in composer.json) with PHP 8.3.6
  - Enable the required php extensions from [the documentation](https://laravel.com/docs/11.x/deployment#server-requirements)
  - Create a mysql database. It is good practice (if not imperative) to also create a user for the database, but in my case I will leave it as root since it is just a test and will most likely not be deployed anywhere

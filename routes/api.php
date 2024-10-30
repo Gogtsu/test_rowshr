@@ -12,3 +12,6 @@ Route::delete('/projects/{project}/employees/{employee}', [ProjectController::cl
 Route::post('/projects/{project}/change-role/{employee}', [ProjectController::class, 'changeRole']);
 Route::get('/employees', [EmployeeController::class, 'index']);
 Route::post('/employees/{employee}/assign-project/{project}', [EmployeeController::class, 'assignProject']);
+
+Route::get('/optimized/projects', [ProjectController::class, 'indexOptimized']);
+Route::get('/optimized/projects/filter/{role}', [ProjectController::class, 'listContainingRoleOptimized']);

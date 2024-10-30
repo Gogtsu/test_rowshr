@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 
 class ProjectController extends Controller
 {
@@ -16,12 +17,40 @@ class ProjectController extends Controller
         return response()->json($projects);
     }
 
+    public function indexOptimized()
+    {
+        $projects = Cache::remember('projects', 60, function () {
+            return Project::paginate(10);
+        });
+    
+        return response()->json($projects);
+    }
+
     public function listContainingRole($role)
     {
         $projects = Project::whereHas('employees', function ($query) use ($role) {
             $query->where('role', $role);
         })->with('employees')->get();
 
+        return response()->json($projects);
+    }
+
+    public function listContainingRoleOptimized($role)
+    {
+        $cacheKey = "projects_role_{$role}";
+
+        $projects = Cache::get($cacheKey);
+
+        if (!$projects) {
+            $projects = Project::whereHas('employees', function ($query) use ($role) {
+                $query->where('role', $role);
+            })->with('employees')->paginate(10); 
+
+            // Only cache if there are results
+            if ($projects->total() > 0) {
+                Cache::put($cacheKey, $projects, 60);
+            }
+        }
         return response()->json($projects);
     }
 
