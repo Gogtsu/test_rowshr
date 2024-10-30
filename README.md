@@ -32,3 +32,24 @@
 # Task 2
  - actually **task 2.2** since 2.1 is already implemented for testing purposes in Task 1.
  - create 2 controllers `php artisan make:controller ProjectController` and `php artisan make:controller EmployeeController`
+ - for Project listing **task 2.2** I will simply use the `with` function that already specifies `withPivot('role')`
+ - for the filtering of **task 2.3** I will use `whereHas` and a $role parameter
+ - add the Routes to `web.php`
+ - Before moving to **task 3** I would like to start with the **bonus task** with Vue.Js since for **task 3** I would have to use `web.php` instead of `api.php`. Also I want to have an interface for these functions myself.
+
+# Bonus Task
+ - I will not separate the frontend and backend from the root directory.
+ - I will use Laravel's default module builder, vite and install `@vitejs/plugin-vue`
+ - `php artisan install:api` and delete the `personal_access_token` migration since there is no authentication
+ - Now that vue is working I will install `vue-router` and setup the standard `App.vue` with `router.js`
+ - I will create a folter for employees components and one for project components
+ - There isn't much to talk about the vue part, it's just coding. Oh and I used tailwind since it comes preinstalled and it's my fav css framework. You should see the frontend for yourself
+ - I tried to include all the functions, but in such a way that I can use relations and not flood the query requests for the db. For example the count of roles is done after clicking a project
+
+# Task 3 
+ - 1. likely the most complex function so far for the backend. Most Notably I used the type paramenter with automatically converts from the id to the model object, and the role as a request parameter since we are using it as string 
+ - 2. basic `delete request`
+ - 3. using `detach` method from laravel
+
+# Task 4
+ - read Optimisation.md
