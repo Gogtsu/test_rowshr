@@ -31,4 +31,4 @@
 
 # Task 2
  - actually **task 2.2** since 2.1 is already implemented for testing purposes in Task 1.
- -  
+ - create 2 controllers `php artisan make:controller ProjectController` and `php artisan make:controller EmployeeController`
