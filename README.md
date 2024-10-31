@@ -1,4 +1,5 @@
 # Docker installation
+ - copy env.example to .env
  - run `docker-compose up -d --build`
  - after the build run `docker-compose exec php chown -R laravel:laravel /var/www/html/storage /var/www/html/bootstrap/cache` to give laravel user group access to these folders
 # Installation
